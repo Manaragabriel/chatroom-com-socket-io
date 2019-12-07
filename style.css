@@ -1,0 +1,56 @@
+body{
+  background-color: #380e7f;
+  min-height: 96vh;
+  display:flex;
+  align-items: center;
+
+}
+
+.main-wrapper{
+  background-color: #fff;
+  width: 50%;
+  min-height: 1px;
+  margin: auto;
+  border-radius: 2px;
+  padding: 10px;
+}
+.message-box{
+  display: none;
+  height: 300px;
+  border-bottom: 1px solid #ced4da;
+}
+
+.button{
+  background-color: #d62196;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px;
+  color: white;
+}
+.input{
+  height: 20px;
+  width: 70%;
+}
+.chat-input{
+  display: none;
+  margin-top: 10px;
+}
+#usuario{
+  width:100%;
+}
+label{
+  display:block;
+}
+#loginBtn{
+  margin-top:2px;
+}
+
+.mt-5{
+  margin-top:5px;
+}
+.messages{
+  flex: 8;
+}
+.user-list{
+  flex:4;
+}
