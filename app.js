@@ -36,9 +36,9 @@ io.on('connection',(socket)=>{
     })
 })
 
-app.post('/',(req,res)=>{
+app.get('/',(req,res)=>{
    
-    io.emit(req.query.id,req.body.id_pedido )
+    io.emit(req.query.id,req.query.id_pedido )
     res.send('');
 })
 
