@@ -2,22 +2,20 @@ const express = require("express")
 const app = new express()
 var http = require("http").createServer(app)
 const io = require("socket.io")(http)
-
+const bodyParser = require('body-parser');
 
 var usuarios = {}
 
 app.use(express.static(__dirname))
-app.get('/',(req,res)=>{
-    res.sendFile('index.html',{root: __dirname})
-})
-
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 io.on('connection',(socket)=>{
     socket.on('message',(msg)=>{
         let ret = {}
+        console.log('here')
         ret.from = usuarios[socket.id]
         ret.mensagem = msg
-        io.sockets.emit('atualiza_mensagem',ret)
+        io.sockets.emit(msg,ret)
     })
     socket.on('login',(usuario)=>{
         if(usuario.length == 0){
@@ -38,6 +36,11 @@ io.on('connection',(socket)=>{
     })
 })
 
+app.post('/',(req,res)=>{
+   
+    io.emit(req.query.id,req.body.id_pedido )
+    res.send('');
+})
 
 
 http.listen(3000,()=>{
